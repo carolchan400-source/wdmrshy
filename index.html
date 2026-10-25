@@ -1,1 +1,839 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#14090f">
+<title>Jasa Peluk Gilang — Karena Satu Pelukan Bisa Lebih Berarti</title>
+<meta name="description" content="Jasa Peluk adalah karya kreatif dan personal tentang kehangatan, kepedulian, dan koneksi antar manusia. Sebuah hadiah, bukan layanan komersial.">
+<meta property="og:title" content="Jasa Peluk Gilang">
+<meta property="og:description" content="Karena terkadang, satu pelukan terasa lebih berarti daripada seribu kata.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="foto-1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jasa Peluk Gilang">
+<meta name="twitter:description" content="Karena terkadang, satu pelukan terasa lebih berarti daripada seribu kata.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#14090f; --wine:#2a0f1c; --wine2:#3a1626;
+  --gold:#d8b98a; --gold-d:#a9885c; --rose:#e2899f; --blush:#f3d6dc; --ivory:#f6ece4;
+  --soft:rgba(246,236,228,.72); --line:rgba(216,185,138,.28);
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Jost',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);font-weight:300;background:var(--night);color:var(--ivory);line-height:1.75;overflow-x:hidden;font-size:16px}
+body.locked{overflow:hidden}
+::selection{background:var(--rose);color:var(--night)}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.container{max-width:1120px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.15;letter-spacing:.005em}
+section{padding:110px 0;position:relative;z-index:2}
+.eyebrow{display:inline-block;font-size:13px;letter-spacing:.2em;color:var(--gold);margin-bottom:18px}
+.eyebrow::before,.eyebrow::after{content:"";display:inline-block;width:28px;height:1px;background:var(--gold-d);vertical-align:middle;margin:0 12px}
+.section-head{text-align:center;max-width:680px;margin:0 auto 56px}
+.section-head h2{font-size:clamp(32px,5vw,50px);margin-bottom:16px}
+.section-head p{color:var(--soft)}
+em{font-style:italic;color:var(--blush)}
+
+/* gate */
+#gate{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;
+  background:radial-gradient(ellipse at 50% 40%,var(--wine2),var(--night) 70%);transition:opacity 1.2s ease,visibility 1.2s}
+#gate.hide{opacity:0;visibility:hidden}
+.gate-box{max-width:440px}
+.gate-heart{font-size:34px;color:var(--rose);margin-bottom:20px;animation:beat 2.4s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.gate-box h1{font-size:clamp(34px,8vw,52px);margin-bottom:12px}
+.gate-box p{color:var(--soft);margin-bottom:34px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 34px;border:1px solid var(--gold);color:var(--gold);background:transparent;font:400 14px var(--sans);letter-spacing:.14em;cursor:pointer;border-radius:2px;transition:background .3s,color .3s}
+.btn:hover{background:var(--gold);color:var(--night)}
+.btn.fill{background:var(--gold);color:var(--night)}
+.btn.fill:hover{background:var(--blush);border-color:var(--blush)}
+.gate-skip{display:block;margin:20px auto 0;background:none;border:0;color:var(--soft);font:300 13px var(--sans);cursor:pointer;text-decoration:underline;text-underline-offset:4px;min-height:44px}
+
+/* petals + sound */
+#petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.sound-btn{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:500;width:38px;height:38px;border-radius:50%;
+  background:rgba(20,9,15,.78);border:1px solid var(--gold-d);color:var(--gold);cursor:pointer;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center}
+.sound-btn svg{width:17px;height:17px}
+.sound-btn::after{content:"";position:absolute;inset:-6px}
+.sound-btn .off{display:none}
+.sound-btn.muted .on{display:none}.sound-btn.muted .off{display:block}
+
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:600;padding:16px 0;transition:background .4s,padding .4s}
+header.scrolled{background:rgba(20,9,15,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:10px 0}
+nav{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--serif);font-size:23px;font-weight:500;color:var(--gold);display:flex;align-items:center;gap:10px}
+.logo i{font-style:normal;color:var(--rose)}
+.nav-links{display:flex;gap:34px;font-size:14px;letter-spacing:.08em}
+.nav-links a{color:var(--soft);transition:color .25s;padding:8px 0}
+.nav-links a:hover{color:var(--gold)}
+.menu-btn{display:none;width:48px;height:48px;background:none;border:0;cursor:pointer;color:var(--gold);align-items:center;justify-content:center}
+.menu-btn span,.menu-btn span::before,.menu-btn span::after{display:block;width:24px;height:1.5px;background:currentColor;position:relative;transition:transform .3s,background .3s}
+.menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0}
+.menu-btn span::before{top:-7px}.menu-btn span::after{top:7px}
+.menu-btn[aria-expanded="true"] span{background:transparent}
+.menu-btn[aria-expanded="true"] span::before{transform:translateY(7px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span::after{transform:translateY(-7px) rotate(-45deg)}
+
+/* hero */
+.hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:130px 0 90px;background:radial-gradient(ellipse at 75% 20%,rgba(226,137,159,.22),transparent 55%),radial-gradient(ellipse at 10% 90%,rgba(216,185,138,.12),transparent 50%),linear-gradient(180deg,var(--night),var(--wine))}
+.hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+.hero h1{font-size:clamp(42px,6.4vw,78px);margin-bottom:26px;font-weight:400}
+.hero .lead{color:var(--soft);font-size:17px;max-width:500px;margin-bottom:38px}
+.hero-note{margin-top:44px;font-family:var(--serif);font-style:italic;font-size:19px;color:var(--gold)}
+.arch{position:relative;max-width:400px;margin:0 auto;width:100%}
+.arch::before{content:"";position:absolute;inset:-14px;border:1px solid var(--line);border-radius:999px 999px 6px 6px}
+.frame{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--wine2),var(--night));aspect-ratio:4/5}
+.frame img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s ease}
+.frame:hover img{transform:scale(1.04)}
+.frame.noimg img{display:none}
+.frame.noimg::after{content:"♡";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:56px;color:var(--gold-d)}
+.arch .frame{border-radius:999px 999px 4px 4px;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.arch figcaption{text-align:center;margin-top:30px;font-family:var(--serif);font-style:italic;color:var(--soft);font-size:18px}
+
+/* intro + about */
+.intro{background:var(--wine)}
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.intro h2{font-size:clamp(30px,4.4vw,44px);margin-bottom:22px}
+.intro p{color:var(--soft);margin-bottom:16px}
+.moments{display:grid;gap:18px}
+.moment{border:1px solid var(--line);padding:24px 26px;background:rgba(20,9,15,.35)}
+.moment h4{font-size:22px;color:var(--gold);margin-bottom:4px}
+.moment p{margin:0;font-size:15px}
+.about-inner{max-width:720px;margin:0 auto}
+.about-inner p{color:var(--soft);margin-bottom:22px;font-size:17px}
+.about-inner p:first-of-type{color:var(--ivory);font-size:19px}
+.pull-quote{font-family:var(--serif);font-style:italic;font-size:clamp(25px,3.6vw,34px);line-height:1.4;color:var(--blush)!important;text-align:center;margin:46px 0!important;padding:34px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+/* gallery */
+.gallery{background:var(--wine)}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.gal-grid .frame{aspect-ratio:3/4;border:1px solid var(--line)}
+.gal-grid figure:nth-child(even){margin-top:34px}
+
+/* services */
+.service-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.service-card{border:1px solid var(--line);padding:34px 32px;background:linear-gradient(160deg,rgba(58,22,38,.55),rgba(20,9,15,.6));transition:border-color .4s}
+.service-card:hover{border-color:var(--gold)}
+.service-card h3{font-size:27px;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:12px}
+.service-card h3 span{font-size:22px}
+.service-card p{color:var(--soft);font-size:15.5px}
+
+/* values */
+.why{background:linear-gradient(180deg,var(--night),var(--wine))}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line)}
+.why-card{padding:34px 22px;text-align:center;border:1px solid var(--line);margin:-1px 0 0 -1px}
+.why-card .ic{font-size:26px;margin-bottom:10px}
+.why-card h4{font-size:23px;color:var(--gold);margin-bottom:6px}
+.why-card p{font-size:14.5px;color:var(--soft)}
+
+
+/* cta + faq */
+.cta{padding:0 24px;position:relative;z-index:2}
+.cta-banner{max-width:1072px;margin:0 auto;text-align:center;padding:84px 28px;border:1px solid var(--gold-d);background:radial-gradient(ellipse at 50% 0,rgba(226,137,159,.22),transparent 65%),var(--wine)}
+.cta-banner h2{font-size:clamp(30px,5vw,48px);margin-bottom:16px}
+.cta-banner p{color:var(--soft);max-width:520px;margin:0 auto 32px}
+.faq-list{max-width:740px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left;background:none;border:0;color:var(--ivory);font:500 21px/1.3 var(--serif);padding:22px 0;cursor:pointer;min-height:56px}
+.faq-q .plus{color:var(--gold);font-size:26px;transition:transform .3s;flex-shrink:0}
+.faq-item.open .plus{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;color:var(--soft);font-size:15.5px}
+.faq-a p{padding-bottom:22px}
+.faq-item.open .faq-a{max-height:420px}
+
+footer{position:relative;z-index:2;background:#0d0509;border-top:1px solid var(--line);padding:70px 0 34px;margin-top:110px;color:var(--soft)}
+.disclaimer{border:1px solid var(--line);padding:20px 24px;font-size:13.5px;margin-bottom:44px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.footer-logo{font-family:var(--serif);font-size:26px;color:var(--gold);margin-bottom:10px}
+footer h5{font:500 13px var(--sans);letter-spacing:.18em;color:var(--gold);margin-bottom:14px}
+footer li{margin-bottom:8px;font-size:14.5px}
+footer li a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px}
+
+/* reveal (hanya aktif bila JS jalan) */
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity 1s ease,transform 1s ease}
+.js .reveal.visible{opacity:1;transform:none}
+
+@media (max-width:960px){
+  section{padding:84px 0}
+  .menu-btn{display:flex}
+  .nav-links{position:fixed;top:0;right:0;bottom:0;width:min(80vw,320px);flex-direction:column;justify-content:center;gap:10px;padding:40px 36px;background:var(--night);border-left:1px solid var(--line);transform:translateX(100%);transition:transform .45s ease;font-size:20px;font-family:var(--serif);letter-spacing:.02em}
+  .nav-links.open{transform:none}
+  .nav-links a{display:block;padding:12px 0;font-size:24px}
+  .hero-inner,.intro-grid{grid-template-columns:1fr;gap:48px}
+  .hero{padding-top:110px}
+  .arch{max-width:320px}
+  .gal-grid{grid-template-columns:repeat(2,1fr)}
+  .gal-grid figure:nth-child(even){margin-top:0}
+  .service-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div:first-child{grid-column:1/-1}
+}
+@media (max-width:480px){
+  .container{padding:0 20px}
+  .service-card{padding:28px 22px}
+  .cta-banner{padding:60px 22px}
+  .eyebrow::before,.eyebrow::after{width:14px;margin:0 8px}
+  .footer-bottom{flex-direction:column}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+
+/* ===== ALUR UCAPAN (password + langkah) ===== */
+.sound-btn{z-index:950}
+body.inflow #petals{z-index:901}
+#flow{position:fixed;inset:0;z-index:900;background:radial-gradient(ellipse at 50% 30%,var(--wine2),var(--night) 75%);transition:opacity 1.1s ease,visibility 1.1s}
+#flow.hide{opacity:0;visibility:hidden}
+.flow-bar{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:center;padding:calc(14px + env(safe-area-inset-top)) 16px 10px;min-height:68px}
+.flow-back{position:absolute;left:max(8px,env(safe-area-inset-left));top:calc(10px + env(safe-area-inset-top));width:48px;height:48px;background:none;border:0;color:var(--gold);font-size:26px;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .3s}
+.flow-back.show{opacity:1;visibility:visible}
+.flow-dots{display:flex;gap:10px;opacity:0;transition:opacity .4s}
+.flow-dots.show{opacity:1}
+.flow-dots i{width:7px;height:7px;border-radius:50%;border:1px solid var(--gold-d);transition:background .4s,transform .4s}
+.flow-dots i.on{background:var(--gold);transform:scale(1.3)}
+.flow-dots i.done{background:var(--gold-d)}
+.stage{position:absolute;inset:0;display:flex;overflow-y:auto;opacity:0;visibility:hidden;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease,visibility .7s}
+.stage.active{opacity:1;visibility:visible;transform:none}
+.stage.out{transform:translateY(-18px)}
+.stage-box{margin:auto;width:100%;max-width:560px;padding:84px 24px calc(60px + env(safe-area-inset-bottom));text-align:center}
+.stage-box h2{font-size:clamp(30px,6vw,44px);margin-bottom:14px}
+.stage-box>p{color:var(--soft);margin-bottom:26px}
+.stage-box .btn{margin-top:10px}
+.btn[disabled]{opacity:.35;pointer-events:none}
+.pin{display:flex;justify-content:center;gap:18px;margin:8px 0 14px}
+.pin i{width:15px;height:15px;border-radius:50%;border:1px solid var(--gold);transition:background .2s}
+.pin i.f{background:var(--gold)}
+.pin.shake{animation:shake .45s}
+@keyframes shake{20%,60%{transform:translateX(-9px)}40%,80%{transform:translateX(9px)}}
+.lock-msg{min-height:26px;font-size:14.5px;color:var(--rose);margin-bottom:12px}
+.lock-msg.ok{color:var(--gold)}
+.keypad{display:grid;grid-template-columns:repeat(3,72px);gap:14px;justify-content:center}
+.key{width:72px;height:72px;border-radius:50%;border:1px solid var(--line);background:rgba(20,9,15,.5);color:var(--ivory);font:400 26px var(--serif);cursor:pointer;transition:background .2s,border-color .2s}
+.key:hover,.key:active{background:var(--wine2);border-color:var(--gold)}
+.key.blank{visibility:hidden}
+.type{font-family:var(--serif);font-size:clamp(22px,4.4vw,28px)!important;line-height:1.6;color:var(--ivory)!important;min-height:230px;text-align:left}
+.type.caret::after{content:"|";color:var(--gold);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hug-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:22px}
+.hug{padding:16px 10px;border:1px solid var(--line);background:rgba(20,9,15,.45);color:var(--ivory);font:400 16px var(--serif);cursor:pointer;min-height:56px;transition:border-color .3s,background .3s}
+.hug span{display:block;font-size:22px}
+.hug.sel{border-color:var(--gold);background:var(--wine2);color:var(--gold)}
+.hug-msg{min-height:120px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 8px;margin-bottom:10px;font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.55;color:var(--blush);display:flex;align-items:center;justify-content:center}
+.car-wrap{position:relative}
+.car{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -24px;padding:0 11%}
+.car::-webkit-scrollbar{display:none}
+.slide{flex:0 0 78%;scroll-snap-align:center}
+.slide .frame{aspect-ratio:3/4;border:1px solid var(--line)}
+.car-cap{min-height:60px;margin:18px 0 6px;font-family:var(--serif);font-style:italic;font-size:20px;color:var(--blush)}
+.car-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-bottom:6px}
+.car-nav button{width:44px;height:44px;background:none;border:1px solid var(--line);color:var(--gold);font-size:20px;border-radius:50%;cursor:pointer}
+.car-dots{display:flex;gap:8px}
+.car-dots i{width:6px;height:6px;border-radius:50%;background:var(--line);transition:background .3s}
+.car-dots i.on{background:var(--gold)}
+.msg-big{font-family:var(--serif);font-size:clamp(23px,4.6vw,30px)!important;line-height:1.55;color:var(--ivory)!important}
+.ask-row{display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap;min-height:112px;position:relative;margin-top:18px}
+.final{display:none}
+.final.show{display:block}
+.heart-fly{position:fixed;bottom:-30px;z-index:960;pointer-events:none;color:var(--rose);opacity:.9;animation:fly 3.4s ease-in forwards}
+@keyframes fly{to{transform:translate(var(--dx),-112vh) rotate(25deg);opacity:0}}
+@media (max-width:380px){.keypad{grid-template-columns:repeat(3,64px);gap:12px}.key{width:64px;height:64px}}
+
+/* ===== bunga peony (ilustrasi) ===== */
+.peony-img:not([src]){visibility:hidden}
+@keyframes bloom{from{opacity:0;transform:scale(.4) rotate(-24deg)}}
+@keyframes breathe{50%{transform:scale(1.05) rotate(2.5deg)}}
+.gate-peony{width:150px;height:150px;margin:0 auto 14px;animation:bloom 2.2s cubic-bezier(.2,.8,.2,1) both,breathe 6s ease-in-out 2.2s infinite}
+.final-peony{display:block;width:170px;height:170px;margin:0 auto 14px}
+.final.show .final-peony{animation:bloom 1.8s cubic-bezier(.2,.8,.2,1) both,breathe 6s ease-in-out 1.8s infinite}
+</style>
+</head>
+<body class="locked">
+<script>document.documentElement.classList.add('js')</script>
+
+<div id="gate" role="dialog" aria-label="Pembuka">
+  <div class="gate-box">
+    <img class="peony-img gate-peony" alt="" aria-hidden="true">
+    <h1>Untuk <em>Widi</em></h1>
+    <p>Sebuah ruang kecil yang dibuat dengan hati. Nyalakan suara agar lebih terasa.</p>
+    <button class="btn fill" id="enterSound" type="button">MASUK DENGAN MUSIK</button>
+    <button class="gate-skip" id="enterMute" type="button">Masuk tanpa musik</button>
+  </div>
+</div>
+
+<div id="flow" aria-label="Langkah menikmati ucapan">
+  <div class="flow-bar">
+    <button class="flow-back" id="flowBack" type="button" aria-label="Kembali">←</button>
+    <div class="flow-dots" id="flowDots"></div>
+  </div>
+
+  <div class="stage" id="st0"><div class="stage-box">
+    <div class="gate-heart" aria-hidden="true">♥</div>
+    <h2>Masukkan kode</h2>
+    <p id="lockHint"></p>
+    <div class="pin" id="pinDots"><i></i><i></i><i></i><i></i></div>
+    <div class="lock-msg" id="lockMsg" role="status"></div>
+    <div class="keypad" id="keypad"></div>
+  </div></div>
+
+  <div class="stage" id="st1"><div class="stage-box">
+    <span class="eyebrow">LANGKAH 1</span>
+    <p class="type" id="typeBox"></p>
+    <button class="btn fill" type="button" data-next id="n1" disabled>LANJUT</button>
+  </div></div>
+
+  <div class="stage" id="st2"><div class="stage-box">
+    <span class="eyebrow">LANGKAH 2</span>
+    <h2>Pilih satu pelukan yang kamu butuhkan hari ini</h2>
+    <p>Ketuk salah satu.</p>
+    <div class="hug-grid" id="hugGrid"></div>
+    <div class="hug-msg" id="hugMsg">…</div>
+    <button class="btn fill" type="button" data-next id="n2" disabled>LANJUT</button>
+  </div></div>
+
+  <div class="stage" id="st3"><div class="stage-box">
+    <span class="eyebrow">LANGKAH 3</span>
+    <h2>Potongan kenangan</h2>
+    <p>Geser ke samping untuk melihat satu per satu.</p>
+    <div class="car-wrap"><div class="car" id="car"></div></div>
+    <div class="car-cap" id="carCap"></div>
+    <div class="car-nav"><button type="button" id="carPrev" aria-label="Sebelumnya">‹</button><div class="car-dots" id="carDots"></div><button type="button" id="carNext" aria-label="Berikutnya">›</button></div>
+    <button class="btn fill" type="button" data-next>LANJUT</button>
+  </div></div>
+
+  <div class="stage" id="st4"><div class="stage-box">
+    <span class="eyebrow">LANGKAH 4</span>
+    <h2 id="mainTitle"></h2>
+    <p class="msg-big" id="mainText"></p>
+    <button class="btn fill" type="button" data-next>LANJUT</button>
+  </div></div>
+
+  <div class="stage" id="st5"><div class="stage-box">
+    <span class="eyebrow">LANGKAH TERAKHIR</span>
+    <div id="askBox">
+      <h2 id="askQ"></h2>
+      <div class="ask-row"><button class="btn fill" type="button" id="yesBtn">IYA</button><button class="btn" type="button" id="noBtn">NANTI DULU</button></div>
+    </div>
+    <div class="final" id="finalBox">
+      <img class="peony-img final-peony" alt="" aria-hidden="true">
+      <h2 id="finalT"></h2>
+      <p class="msg-big" id="finalP"></p>
+      <button class="btn fill" type="button" id="openSite">BUKA HALAMAN LENGKAP</button>
+    </div>
+  </div></div>
+</div>
+
+<canvas id="petals" aria-hidden="true"></canvas>
+<audio id="bgm" src="backsound.mp3" loop preload="auto"></audio>
+<button class="sound-btn muted" id="soundBtn" type="button" aria-label="Nyalakan musik">
+  <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+  <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="opacity:.75"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/><path d="M3 3l18 18" stroke-width="2"/></svg>
+</button>
+
+<header id="siteHeader">
+  <div class="container">
+    <nav aria-label="Navigasi utama">
+      <a href="#beranda" class="logo"><i>♥</i> Jasa Peluk Gilang</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#galeri">Galeri</a></li>
+        <li><a href="#layanan">Layanan</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="navLinks"><span></span></button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" id="beranda">
+    <div class="container hero-inner">
+      <div>
+        <span class="eyebrow">SEBUAH KONSEP, HANYA DIBUAT UNTUKMU</span>
+        <h1>Terkadang, Widi hanya butuh <em>satu pelukan</em> dari aku</h1>
+        <p class="lead">Jasa Peluk ini dibuat dengan hati untuk seseorang yang berarti. Dan setelah kupikir-pikir, “seseorang” itu selalu mengarah ke kamu. Jadi, kapan kita berhenti main imajinasi dan beralih ke kenyataan?</p>
+        <p class="hero-note">Delapan jenis kehangatan, satu alasan: kamu.</p>
+      </div>
+      <figure class="arch reveal">
+        <div class="frame"><img src="foto-1.jpg" alt="Foto utama" onerror="this.parentNode.classList.add('noimg')"></div>
+        <figcaption>Untukmu wanita termanis. Cukup jadi dirimu, biar aku yang menjaga senyummu.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div class="container intro-grid">
+      <div class="reveal">
+        <span class="eyebrow">MENGAPA INI ADA</span>
+        <h2>Kadang yang kita cari bukan solusi. Hanya <em>kehangatan</em>.</h2>
+        <p>Ada hari ketika kata-kata terasa terlalu berat diucapkan dan nasihat terasa terlalu jauh didengar. Pada hari seperti itu, yang dibutuhkan sederhana: seseorang yang duduk di sisimu, tanpa menghakimi, tanpa terburu-buru pergi.</p>
+        <p>Jasa Peluk lahir dari gagasan itu. Bukan bisnis, bukan transaksi, melainkan simbol bahwa ada orang yang memikirkanmu cukup dalam untuk membangun sebuah ruang khusus, supaya kamu tahu kamu tidak sendirian.</p>
+      </div>
+      <div class="moments reveal">
+        <div class="moment"><h4>Untuk hari yang berat</h4><p>Tidak semua hari harus dihadapi sendirian.</p></div>
+        <div class="moment"><h4>Untuk momen bahagia</h4><p>Kebahagiaan terasa lebih utuh saat dibagikan.</p></div>
+        <div class="moment"><h4>Untuk sekadar hadir</h4><p>Kadang, kehadiran saja sudah cukup.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="tentang">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">TENTANG AKU</span>
+        <h2>Cerita di balik Jasa Peluk</h2>
+      </div>
+      <div class="about-inner reveal">
+        <p>Semua ide besar biasanya dimulai dari hal kecil: percakapan larut malam, atau momen ketika seseorang tampak lelah namun tetap berusaha tersenyum. Jasa Peluk dimulai dari kesadaran bahwa dukungan tidak harus rumit untuk terasa bermakna.</p>
+        <p>Di dunia yang menuntut kita selalu terlihat kuat, ada satu kebutuhan yang sering terlupakan: dipeluk, didengarkan, dan diterima apa adanya, tanpa harus menjelaskan apa pun.</p>
+        <p class="pull-quote">“Tidak semua luka butuh solusi. Kadang, ia hanya butuh ditemani.”</p>
+        <p>Karena itu lahirlah sebuah ruang, bukan ruang fisik melainkan ruang perasaan, tempat kehangatan dikemas dalam bahasa yang paling jujur: pelukan. Bukan jawaban atas segala masalah, tetapi cara mengatakan “aku peduli padamu” tanpa kata.</p>
+        <p>Filosofinya sederhana. Empati mendahului solusi. Kebaikan kecil yang konsisten lebih berarti daripada gestur besar yang jarang. Dan koneksi antar manusia adalah kebutuhan dasar, bukan kemewahan.</p>
+        <p>Pada akhirnya, ini bukan tentang transaksi. Ini pengingat kecil yang tulus bahwa di dunia yang kadang terasa dingin, selalu ada seseorang yang bersedia memberikan kehangatan, tanpa syarat, hanya karena kamu pantas mendapatkannya.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" id="galeri">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">GALERI</span>
+        <h2>Potongan momen yang <em>ingin dikenang</em></h2>
+        <p>Beberapa momen yang ingin kusimpan, untukmu.</p>
+      </div>
+      <div class="gal-grid reveal">
+        <figure><div class="frame"><img src="foto-3.jpg" alt="Kenangan 1" loading="lazy" onerror="this.parentNode.classList.add('noimg')"></div></figure>
+        <figure><div class="frame"><img src="foto-4.jpg" alt="Kenangan 2" loading="lazy" onerror="this.parentNode.classList.add('noimg')"></div></figure>
+        <figure><div class="frame"><img src="foto-5.jpg" alt="Kenangan 3" loading="lazy" onerror="this.parentNode.classList.add('noimg')"></div></figure>
+        <figure><div class="frame"><img src="foto-6.jpg" alt="Kenangan 4" loading="lazy" onerror="this.parentNode.classList.add('noimg')"></div></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="layanan">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">JENIS KEHANGATAN</span>
+        <h2>Delapan makna di balik setiap pelukan</h2>
+        <p>Setiap “layanan” adalah konsep simbolis tentang dukungan emosional, bukan kontak fisik komersial.</p>
+      </div>
+      <div class="service-grid reveal">
+        <div class="service-card"><h3><span>💞</span>Peluk Kasih Sayang</h3><p>Pelukan paling hangat dari hati yang sedang jatuh cinta. Ia berkata, “kamu rumahku,” tanpa perlu banyak kata. Tentang rindu yang sabar menunggu, genggaman yang membuat tenang, dan rasa aman menjadi dirimu sendiri di samping seseorang yang memilihmu setiap hari.</p></div>
+        <div class="service-card"><h3><span>🌧️</span>Peluk Hari Berat</h3><p>Kehadiran tanpa tuntutan. Tidak meminta penjelasan, tidak menuntut kekuatan, hanya ruang untuk berhenti sejenak. Boleh tidak baik-baik saja, dan badai tidak berlangsung selamanya.</p></div>
+        <div class="service-card"><h3><span>🌱</span>Peluk Selamat Datang</h3><p>Sambutan hangat untuk setiap langkah baru. Kamu diterima di sini, apa adanya, tanpa tekanan untuk langsung terlihat sempurna. Awal yang baru terasa ringan saat ada yang menyambut dengan tulus.</p></div>
+        <div class="service-card"><h3><span>🍃</span>Peluk Perpisahan</h3><p>Pelepasan yang lembut. Sedih itu wajar, dan berakhirnya sesuatu tidak menghapus makna yang pernah dibangun. Ia menemani kamu melepaskan, lalu melangkah lagi.</p></div>
+        <div class="service-card"><h3><span>🎉</span>Peluk Bahagia</h3><p>Perayaan untuk pencapaian besar maupun kebahagiaan kecil yang sering terlewat. “Aku ikut senang untukmu,” tanpa rasa iri. Kegembiraan yang dibagi justru tumbuh.</p></div>
+        <div class="service-card"><h3><span>🤍</span>Peluk Diam</h3><p>Kehadiran tanpa kata. Untuk saat ketika kata-kata tidak cukup, dan seseorang hanya ingin ditemani dalam hening tanpa harus menjelaskan apa pun.</p></div>
+        <div class="service-card"><h3><span>💪</span>Peluk Semangat</h3><p>Untuk hari ketika langkahmu berat dan keyakinanmu goyah. Dorongan lembut yang berkata, “kamu lebih kuat dari yang kamu kira.” Setiap usaha kecilmu hari ini tetap berarti, dan seseorang mempercayaimu bahkan saat kamu belum.</p></div>
+        <div class="service-card"><h3><span>🏡</span>Peluk Keluarga</h3><p>Rumah dalam arti terdalam: diterima bukan karena pencapaian, melainkan karena kamu bagian darinya. Selalu ada tempat untuk kembali, dan seseorang yang menunggu dengan pelukan hangat.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">MENGAPA AKU</span>
+        <h2>Nilai yang aku pegang</h2>
+        <p>Bukan tentang seberapa besar, tetapi seberapa tulus.</p>
+      </div>
+      <div class="why-grid reveal">
+        <div class="why-card"><div class="ic">🤝</div><h4>Kepercayaan</h4><p>Dibangun di atas rasa percaya yang tidak main-main.</p></div>
+        <div class="why-card"><div class="ic">🕊️</div><h4>Kenyamanan</h4><p>Ruang aman tanpa tekanan untuk terlihat sempurna.</p></div>
+        <div class="why-card"><div class="ic">🛡️</div><h4>Keamanan</h4><p>Rasa aman datang lebih dulu dari apa pun.</p></div>
+        <div class="why-card"><div class="ic">🙏</div><h4>Rasa Hormat</h4><p>Setiap perasaan dihargai, tidak diremehkan.</p></div>
+        <div class="why-card"><div class="ic">💗</div><h4>Empati</h4><p>Memahami dulu, sebelum mencoba memperbaiki.</p></div>
+        <div class="why-card"><div class="ic">🌼</div><h4>Kebaikan</h4><p>Kebaikan kecil yang konsisten lebih berarti.</p></div>
+        <div class="why-card"><div class="ic">🔗</div><h4>Koneksi</h4><p>Manusia tidak dirancang menghadapi semuanya sendirian.</p></div>
+        <div class="why-card"><div class="ic">✨</div><h4>Ketulusan</h4><p>Semuanya datang dari niat yang tulus.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta">
+    <div class="cta-banner reveal">
+      <h2>Karena kamu pantas merasa <em>hangat</em></h2>
+      <p>Halaman ini dibuat dengan penuh perhatian, sebagai pengingat kecil bahwa kamu selalu berarti dan tidak sendirian.</p>
+      <a href="#tentang" class="btn fill">BACA LAGI CERITAKU</a>
+    </div>
+  </div>
+
+  <section class="faq" id="faq" style="padding-bottom:0">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">PERTANYAAN UMUM</span>
+        <h2>Yang sering ditanyakan</h2>
+      </div>
+      <div class="faq-list reveal" id="faqList"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="disclaimer"><b>Catatan dari hati:</b> Jasa Peluk bukan bisnis dan tidak bisa dipesan. Ia hanya karya kecil yang kubuat sendiri, tanpa harga dan tanpa transaksi, untuk satu orang saja: kamu. Setiap pelukan di sini adalah caraku mengatakan hal-hal yang kadang sulit diucapkan, bahwa aku memikirkanmu, menyayangimu, dan ingin selalu hadir untukmu.</div>
+    <div class="footer-grid">
+      <div><div class="footer-logo">♥ Jasa Peluk Gilang</div><p style="font-size:14.5px;max-width:300px">Karena terkadang, satu pelukan terasa lebih berarti daripada seribu kata.</p></div>
+      <div><h5>JELAJAHI</h5><ul><li><a href="#beranda">Beranda</a></li><li><a href="#tentang">Tentang</a></li><li><a href="#galeri">Galeri</a></li><li><a href="#layanan">Layanan</a></li></ul></div>
+      <div><h5>LAINNYA</h5><ul><li><a href="#faq">FAQ</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Jasa Peluk — Konsep Kreatif Personal.</span><span>Dibuat dengan ❤️ untuk seseorang yang istimewa.</span></div>
+  </div>
+</footer>
+
+<script>
+/* ===== PENGATURAN — ubah isi di sini sesukamu ===== */
+window.CONFIG={
+  password:'0000',
+  hint:'Petunjuk: kodenya 0000.',
+  welcome:'Selamat datang, Widi.',
+  letter:[
+    'Hai, Widi.',
+    'Aku membuat ruang kecil ini bukan untuk dijual, bukan untuk dipamerkan.',
+    'Hanya untuk satu orang: kamu.',
+    'Ada beberapa langkah di depan. Pelan-pelan saja ya.'
+  ],
+  hugs:{
+    'Kasih Sayang':['💞','Kamu adalah tempat paling tenang yang kutemukan. Aku sayang kamu, hari ini dan di hari-hari berikutnya.'],
+    'Hari Berat':['🌧️','Boleh tidak baik-baik saja. Istirahatlah sebentar, aku di sini.'],
+    'Selamat Datang':['🌱','Kamu diterima apa adanya. Tidak perlu terlihat sempurna.'],
+    'Perpisahan':['🍃','Sedih itu wajar. Tidak ada yang buru-buru, kita lewati pelan-pelan.'],
+    'Bahagia':['🎉','Aku ikut senang untukmu, dan senang bisa menjadi bagian dari harimu.'],
+    'Diam':['🤍','Tidak perlu kata-kata. Cukup ditemani dalam hening.'],
+    'Semangat':['💪','Kamu lebih kuat dari yang kamu kira. Usahamu hari ini terlihat dan berarti.'],
+    'Keluarga':['🏡','Selalu ada tempat untuk kembali, dan seseorang yang menunggu dengan hangat.']
+  },
+  captions:['Satu momen yang ingin kuingat.','Tawa yang membuat harinya ringan.','Hari biasa yang terasa istimewa.','Dan masih banyak yang belum sempat difoto.'],
+  mainTitle:'Untukmu, Widi',
+  mainText:'Terima kasih sudah menjadi alasan di balik halaman ini. Kamu tidak harus kuat sepanjang waktu, dan kamu tidak sendirian.',
+  askQ:'Jadi, kapan kita berhenti main imajinasi dan beralih ke kenyataan?',
+  finalTitle:'Terima kasih ♥',
+  finalText:'Ucapan ini selesai, tapi pelukannya belum. Sampai ketemu.'
+};
+</script>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ilustrasi bunga peony: digambar sekali lalu dipakai di beberapa tempat */
+  function buildPeony(N){
+    var SC=N/1400,c=document.createElement('canvas');c.width=c.height=N;
+    var g=c.getContext('2d'),sd=42;
+    function rnd(){sd=sd*16807%2147483647;return sd/2147483647}
+    function pet(L,w,c1,c2,c3){
+      var k=L/106;g.save();g.scale(k*w,k);g.translate(-64,-122);
+      function path(){g.beginPath();g.moveTo(64,122);
+        g.bezierCurveTo(30,108,4,84,6,54);g.bezierCurveTo(7,38,16,26,28,22);
+        g.quadraticCurveTo(34,8,46,16);g.quadraticCurveTo(54,20,64,22);
+        g.quadraticCurveTo(74,20,82,16);g.quadraticCurveTo(94,8,100,22);
+        g.bezierCurveTo(112,26,121,38,122,54);g.bezierCurveTo(124,84,98,108,64,122);g.closePath()}
+      g.shadowColor='rgba(110,25,60,.32)';g.shadowBlur=26*SC;g.shadowOffsetY=6*SC;
+      var gr=g.createRadialGradient(64,118,2,64,64,76);
+      gr.addColorStop(0,c3);gr.addColorStop(.5,c2);gr.addColorStop(1,c1);
+      path();g.fillStyle=gr;g.fill();
+      g.shadowColor='transparent';g.shadowBlur=0;g.shadowOffsetY=0;
+      g.save();path();g.clip();
+      g.strokeStyle='rgba(170,55,95,.09)';g.lineWidth=1.3;
+      for(var i=-6;i<=6;i++){g.beginPath();g.moveTo(64,116);g.quadraticCurveTo(64+i*3,70,64+i*8.5,24);g.stroke()}
+      var hl=g.createLinearGradient(0,10,0,66);hl.addColorStop(0,'rgba(255,255,255,.5)');hl.addColorStop(1,'rgba(255,255,255,0)');
+      g.fillStyle=hl;g.fillRect(0,0,128,66);g.restore();
+      path();g.strokeStyle='rgba(255,255,255,.55)';g.lineWidth=1.6;g.stroke();g.restore();
+    }
+    var rings=[[9,560,.92,'#ffe8ee','#f6bccd','#ea94ae'],[9,480,.9,'#ffe3ea','#f3b0c4','#e4809e'],[8,400,.88,'#ffe6ec','#f3a9bf','#dd7392'],
+      [7,320,.86,'#fddde6','#ef97b2','#d4688a'],[6,245,.84,'#fbd0dd','#e8809f','#c9507a'],[5,170,.8,'#f7bccf','#e06a90','#b83b68']];
+    g.translate(N/2,N/2);g.scale(SC,SC);
+    var sh=g.createRadialGradient(0,40,50,0,40,330);sh.addColorStop(0,'rgba(130,30,70,.28)');sh.addColorStop(1,'rgba(130,30,70,0)');
+    g.fillStyle=sh;g.beginPath();g.arc(0,40,330,0,6.283);g.fill();
+    rings.forEach(function(r,ri){
+      var off=rnd()*6.283;
+      for(var i=0;i<r[0];i++){
+        g.save();g.rotate(off+i*(6.283/r[0])+(rnd()-.5)*.28);g.translate(0,-(8+ri*3));g.rotate((rnd()-.5)*.12);
+        pet(r[1]*(.93+rnd()*.14),r[2]*(.95+rnd()*.12),r[3],r[4],r[5]);g.restore();
+      }
+    });
+    var cg=g.createRadialGradient(0,0,2,0,0,70);cg.addColorStop(0,'rgba(255,225,150,.95)');cg.addColorStop(.5,'rgba(236,150,160,.55)');cg.addColorStop(1,'rgba(200,70,110,0)');
+    g.fillStyle=cg;g.beginPath();g.arc(0,0,70,0,6.283);g.fill();
+    for(var j=0;j<70;j++){
+      var a=rnd()*6.283,l=22+rnd()*46;
+      g.strokeStyle='rgba(222,176,92,.9)';g.lineWidth=1.8;g.beginPath();g.moveTo(Math.cos(a)*6,Math.sin(a)*6);g.lineTo(Math.cos(a)*l,Math.sin(a)*l);g.stroke();
+      g.fillStyle='#f3cf78';g.beginPath();g.arc(Math.cos(a)*l,Math.sin(a)*l,2.6,0,6.283);g.fill();
+    }
+    g.fillStyle='#e9b85c';g.beginPath();g.arc(0,0,9,0,6.283);g.fill();
+    return c;
+  }
+  setTimeout(function(){try{
+    var pUrl=buildPeony(640).toDataURL('image/png');
+    [].forEach.call(document.querySelectorAll('.peony-img'),function(im){im.src=pUrl});
+  }catch(err){}},40);
+
+  /* header + menu mobile */
+  var header=$('siteHeader'),menuBtn=$('menuBtn'),navLinks=$('navLinks');
+  addEventListener('scroll',function(){header.classList.toggle('scrolled',scrollY>20)},{passive:true});
+  function setMenu(o){navLinks.classList.toggle('open',o);menuBtn.setAttribute('aria-expanded',o);menuBtn.setAttribute('aria-label',o?'Tutup menu':'Buka menu')}
+  menuBtn.addEventListener('click',function(){setMenu(!navLinks.classList.contains('open'))});
+  navLinks.addEventListener('click',function(e){if(e.target.tagName==='A')setMenu(false)});
+  addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
+
+  /* reveal (aman untuk layar kecil: threshold 0, unobserve setelah tampil) */
+  var rv=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:0,rootMargin:'0px 0px -6% 0px'});
+    rv.forEach(function(el){io.observe(el)});
+  }else rv.forEach(function(el){el.classList.add('visible')});
+
+  /* musik */
+  var bgm=$('bgm'),btn=$('soundBtn'),fadeT,TARGET=.55;
+  function setUI(on){btn.classList.toggle('muted',!on);btn.setAttribute('aria-label',on?'Matikan musik':'Nyalakan musik')}
+  function fadeIn(){
+    clearInterval(fadeT);bgm.volume=0;
+    fadeT=setInterval(function(){if(bgm.volume<TARGET-.03)bgm.volume=Math.min(TARGET,bgm.volume+.03);else{bgm.volume=TARGET;clearInterval(fadeT)}},120);
+  }
+  function play(){
+    var p=bgm.play();
+    if(p&&p.then){p.then(function(){setUI(true);fadeIn()}).catch(function(){setUI(false)})}else{setUI(true);fadeIn()}
+  }
+  function pause(){clearInterval(fadeT);bgm.pause();setUI(false)}
+  btn.addEventListener('click',function(){bgm.paused?play():pause()});
+  var wasPlaying=false;
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden){wasPlaying=!bgm.paused;if(wasPlaying)bgm.pause()}
+    else if(wasPlaying&&!$('gate').classList.contains('hide')===false){bgm.play().catch(function(){})}
+  });
+
+  /* gerbang pembuka */
+  function enter(withSound){
+    $('gate').classList.add('hide');
+    if(withSound)play();
+    startFlow();
+    setTimeout(function(){$('gate').style.display='none'},1300);
+  }
+  $('enterSound').addEventListener('click',function(){enter(true)});
+  $('enterMute').addEventListener('click',function(){enter(false)});
+
+  /* kelopak bunga jatuh — gerak berbasis waktu agar mulus di semua perangkat */
+  var cv=$('petals'),cx=cv.getContext('2d'),W=0,H=0,dpr=1,P=[],raf=0,last=0,T=0,SP=[];
+  function petal(c1,c2,c3){
+    var c=document.createElement('canvas');c.width=128;c.height=128;var g=c.getContext('2d');
+    var path=function(){g.beginPath();g.moveTo(64,122);
+      g.bezierCurveTo(30,108,4,84,6,54);g.bezierCurveTo(7,38,16,26,28,22);
+      g.quadraticCurveTo(34,8,46,16);g.quadraticCurveTo(54,20,64,22);
+      g.quadraticCurveTo(74,20,82,16);g.quadraticCurveTo(94,8,100,22);
+      g.bezierCurveTo(112,26,121,38,122,54);g.bezierCurveTo(124,84,98,108,64,122);g.closePath()};
+    var gr=g.createRadialGradient(64,110,4,64,62,72);
+    gr.addColorStop(0,c3);gr.addColorStop(.5,c2);gr.addColorStop(1,c1);
+    path();g.fillStyle=gr;g.fill();
+    g.save();path();g.clip();
+    g.strokeStyle='rgba(176,64,98,.13)';g.lineWidth=1.6;
+    [-34,-17,0,17,34].forEach(function(dx){g.beginPath();g.moveTo(64,112);g.quadraticCurveTo(64+dx*.5,70,64+dx*1.5,24);g.stroke()});
+    var hl=g.createLinearGradient(0,10,0,60);hl.addColorStop(0,'rgba(255,255,255,.45)');hl.addColorStop(1,'rgba(255,255,255,0)');
+    g.fillStyle=hl;g.fillRect(0,0,128,64);g.restore();
+    path();g.strokeStyle='rgba(255,255,255,.38)';g.lineWidth=2;g.stroke();
+    return c;
+  }
+  SP=[petal('#fff1f4','#f9c6d3','#ec93ae'),petal('#fde8ee','#f4a9be','#dd7392'),petal('#fff6f6','#fbd9df','#f1a3b6'),petal('#f9d4de','#ee9bb3','#d4688a')];
+  function size(){dpr=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr)}
+  function mk(init){
+    var d=Math.random();
+    return{sp:SP[Math.random()*4|0],w:12+d*20,x0:Math.random()*(W+80)-40,
+      y:init?Math.random()*(H+80)-40:-40-Math.random()*120,vy:20+d*34,amp:14+Math.random()*28,
+      f1:.45+Math.random()*.45,f2:1+Math.random()*.7,ph:Math.random()*6.28,rf:.5+Math.random()*.5,rp:Math.random()*6.28,
+      ff:.7+Math.random()*.8,fp:Math.random()*6.28,a:.35+d*.4,spin:(Math.random()-.5)*.35,rot:Math.random()*6.28};
+  }
+  function init(){size();var n=W<600?14:26;P=[];for(var i=0;i<n;i++)P.push(mk(true))}
+  function frame(ts){
+    var dt=last?Math.min((ts-last)/1000,.05):0;last=ts;T+=dt;
+    cx.setTransform(1,0,0,1,0,0);cx.clearRect(0,0,cv.width,cv.height);
+    for(var i=0;i<P.length;i++){
+      var p=P[i];p.y+=p.vy*dt;p.rot+=p.spin*dt;
+      if(p.y>H+50){P[i]=p=mk(false)}
+      var x=p.x0+p.y*.08+Math.sin(T*p.f1+p.ph)*p.amp+Math.sin(T*p.f2+p.ph*2)*p.amp*.35;
+      var ang=p.rot+Math.sin(T*p.rf+p.rp)*.7;
+      var ax=Math.abs(Math.cos(T*p.ff+p.fp));
+      var edge=Math.min(1,Math.max(0,p.y+40)/90,Math.max(0,H+50-p.y)/90);
+      cx.globalAlpha=p.a*edge*(.55+.45*ax);
+      cx.setTransform(dpr,0,0,dpr,0,0);cx.translate(x,p.y);cx.rotate(ang);cx.scale(.3+.7*ax,1);
+      cx.drawImage(p.sp,-p.w/2,-p.w/2,p.w,p.w);
+    }
+    raf=requestAnimationFrame(frame);
+  }
+  init();
+  if(!reduce){
+    raf=requestAnimationFrame(frame);
+    document.addEventListener('visibilitychange',function(){
+      if(document.hidden){cancelAnimationFrame(raf)}else{last=0;raf=requestAnimationFrame(frame)}
+    });
+  }
+  var rt,lw=innerWidth;
+  addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){
+    if(Math.abs(innerWidth-lw)>50){lw=innerWidth;init()}else size();
+  },200)});
+
+  /* ===== alur ucapan ===== */
+  var CF=window.CONFIG,flow=$('flow'),cur=-1,LAST=5,stages=[];
+  for(var i=0;i<=LAST;i++)stages.push($('st'+i));
+  var dots=$('flowDots');
+  for(var d=1;d<=LAST;d++)dots.appendChild(document.createElement('i'));
+  function hearts(n){
+    for(var i=0;i<n;i++)(function(i){setTimeout(function(){
+      var h=document.createElement('span');h.className='heart-fly';h.textContent=Math.random()<.7?'♥':'❀';
+      h.style.left=Math.random()*100+'vw';h.style.fontSize=(14+Math.random()*22)+'px';
+      h.style.setProperty('--dx',(Math.random()*120-60)+'px');h.style.animationDuration=(2.6+Math.random()*1.8)+'s';
+      document.body.appendChild(h);setTimeout(function(){h.remove()},4600);
+    },i*(reduce?0:110))})(i);
+  }
+  function go(n){
+    if(n===cur||n<0||n>LAST)return;
+    var prev=stages[cur];
+    if(prev){prev.classList.remove('active');prev.classList.add('out');setTimeout(function(){prev.classList.remove('out')},700)}
+    cur=n;var st=stages[n];st.scrollTop=0;
+    setTimeout(function(){st.classList.add('active');enterStage(n)},prev?350:0);
+    $('flowBack').classList.toggle('show',n>=2);
+    dots.classList.toggle('show',n>=1);
+    [].forEach.call(dots.children,function(el,k){el.className=(k+1===n)?'on':(k+1<n?'done':'')});
+  }
+  function enterStage(n){
+    if(n===1)typeLetter();
+    if(n===3)carInit();
+    if(n===4){$('mainTitle').textContent=CF.mainTitle;$('mainText').textContent=CF.mainText;hearts(18)}
+    if(n===5){$('askQ').textContent=CF.askQ}
+  }
+  function startFlow(){
+    document.body.classList.add('inflow');
+    $('lockHint').textContent=CF.hint;go(0);
+  }
+  [].forEach.call(document.querySelectorAll('[data-next]'),function(b){b.addEventListener('click',function(){go(cur+1)})});
+  $('flowBack').addEventListener('click',function(){go(Math.max(1,cur-1))});
+
+  /* 0: kunci */
+  var pin='',pd=$('pinDots').children,kp=$('keypad'),lm=$('lockMsg'),busy=false;
+  ['1','2','3','4','5','6','7','8','9','','0','⌫'].forEach(function(k){
+    var b=document.createElement('button');b.type='button';b.className='key'+(k===''?' blank':'');b.textContent=k;
+    if(k==='')b.disabled=true;else b.setAttribute('aria-label',k==='⌫'?'Hapus':'Angka '+k);
+    b.addEventListener('click',function(){press(k)});kp.appendChild(b);
+  });
+  addEventListener('keydown',function(e){
+    if(cur!==0)return;
+    if(/^[0-9]$/.test(e.key))press(e.key);else if(e.key==='Backspace')press('⌫');
+  });
+  function paint(){for(var i=0;i<4;i++)pd[i].classList.toggle('f',i<pin.length)}
+  function press(k){
+    if(busy)return;
+    if(k==='⌫'){pin=pin.slice(0,-1);paint();lm.textContent='';return}
+    if(pin.length>=CF.password.length)return;
+    pin+=k;paint();
+    if(pin.length===CF.password.length){
+      if(pin===CF.password){busy=true;lm.className='lock-msg ok';lm.textContent=CF.welcome;hearts(10);setTimeout(function(){go(1);busy=false},1400)}
+      else{busy=true;lm.className='lock-msg';lm.textContent='Kodenya belum tepat. Coba lagi ya.';var pe=$('pinDots');pe.classList.add('shake');
+        setTimeout(function(){pe.classList.remove('shake');pin='';paint();busy=false},500)}
+    }
+  }
+
+  /* 1: surat */
+  var typed=false;
+  function typeLetter(){
+    var box=$('typeBox'),n1=$('n1'),txt=CF.letter.join('\n\n');
+    if(typed){return}
+    typed=true;box.style.whiteSpace='pre-line';
+    if(reduce){box.textContent=txt;n1.disabled=false;return}
+    box.classList.add('caret');var i=0;
+    (function t(){box.textContent=txt.slice(0,++i);if(i<txt.length)setTimeout(t,i>1&&txt[i-1]==='\n'?420:34);else{box.classList.remove('caret');n1.disabled=false}})();
+  }
+
+  /* 2: pilih pelukan */
+  var hg=$('hugGrid');
+  Object.keys(CF.hugs).forEach(function(name){
+    var b=document.createElement('button');b.type='button';b.className='hug';
+    b.innerHTML='<span>'+CF.hugs[name][0]+'</span>Peluk '+name;
+    b.addEventListener('click',function(){
+      [].forEach.call(hg.children,function(x){x.classList.remove('sel')});b.classList.add('sel');
+      $('hugMsg').textContent=CF.hugs[name][1];$('n2').disabled=false;hearts(6);
+    });hg.appendChild(b);
+  });
+
+  /* 3: kenangan */
+  var car=$('car'),cd=$('carDots'),cInit=false,slides=[];
+  function carInit(){
+    if(cInit)return;cInit=true;
+    CF.captions.forEach(function(c,i){
+      var f=document.createElement('div');f.className='slide';
+      f.innerHTML='<div class="frame"><img src="foto-'+(i+3)+'.jpg" alt="Kenangan '+(i+1)+'" onerror="this.parentNode.classList.add(\'noimg\')"></div>';
+      car.appendChild(f);slides.push(f);cd.appendChild(document.createElement('i'));
+    });upd();
+  }
+  function idx(){var w=slides[0].offsetWidth+16;return Math.max(0,Math.min(slides.length-1,Math.round(car.scrollLeft/w)))}
+  function upd(){var i=idx();$('carCap').textContent=CF.captions[i];[].forEach.call(cd.children,function(e,k){e.classList.toggle('on',k===i)})}
+  car.addEventListener('scroll',function(){clearTimeout(car._t);car._t=setTimeout(upd,60)},{passive:true});
+  function slide(d){slides[Math.max(0,Math.min(slides.length-1,idx()+d))].scrollIntoView({behavior:reduce?'auto':'smooth',inline:'center',block:'nearest'})}
+  $('carPrev').addEventListener('click',function(){slide(-1)});
+  $('carNext').addEventListener('click',function(){slide(1)});
+
+  /* 5: penutup */
+  var noBtn=$('noBtn'),dodge=0,MAXD=5,nx=0,baseL=0;
+  function dodgeMove(e){
+    if(dodge>=MAXD)return;
+    if(e&&e.cancelable&&e.type==='touchstart')e.preventDefault();
+    dodge++;
+    if(dodge>=MAXD){noBtn.style.transform='none';noBtn.textContent='BAIKLAH, IYA';return}
+    var r=noBtn.getBoundingClientRect();
+    if(dodge===1)baseL=r.left;
+    var lo=Math.max(-90,12-baseL),hi=Math.min(90,innerWidth-12-r.width-baseL);
+    nx=lo+Math.random()*Math.max(0,hi-lo);
+    var y=Math.random()*60-10;
+    noBtn.style.transition='transform .25s';noBtn.style.transform='translate('+nx+'px,'+y+'px)';
+  }
+  noBtn.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')dodgeMove(e)});
+  noBtn.addEventListener('touchstart',dodgeMove,{passive:false});
+  function yes(){
+    $('askBox').style.display='none';
+    $('finalT').textContent=CF.finalTitle;$('finalP').textContent=CF.finalText;
+    $('finalBox').classList.add('show');hearts(40);
+  }
+  $('yesBtn').addEventListener('click',yes);
+  noBtn.addEventListener('click',function(){if(dodge>=MAXD)yes()});
+  $('openSite').addEventListener('click',function(){
+    flow.classList.add('hide');document.body.classList.remove('locked','inflow');scrollTo(0,0);
+    setTimeout(function(){flow.style.display='none'},1200);
+  });
+
+  /* FAQ */
+  var faq=[
+    ["Apa itu Jasa Peluk?","Karya kreatif dan personal yang menyampaikan kehangatan, empati, dan koneksi manusia lewat sebuah situs web. Ini bukan bisnis nyata."],
+    ["Apakah ini layanan yang bisa dipesan?","Tidak. Tidak ada layanan fisik, pemesanan, atau pembayaran. Semuanya simbolis dan dibuat sebagai karya emosional untuk satu orang."],
+    ["Apakah ini layanan kencan atau escort?","Sama sekali bukan. Konsep ini murni tentang kehangatan emosional secara simbolis, tanpa kontak fisik komersial."],
+    ["Untuk apa situs ini dibuat?","Sebagai hadiah kreatif untuk menyampaikan perhatian dan kepedulian kepada seseorang yang berarti."],
+    ["Apa arti delapan jenis peluk?","Representasi momen emosional dalam hidup: semangat, hari berat, awal baru, perpisahan, kebahagiaan, keheningan, kasih sayang, dan keluarga."],
+    ["Mengapa memilih tema pelukan?","Karena pelukan adalah salah satu cara paling jujur dan universal untuk menyampaikan kepedulian tanpa kata."],
+    ["Apakah ada transaksi uang?","Tidak ada. Tidak ada sistem pembayaran atau pemesanan sama sekali."],
+    ["Apa filosofi di baliknya?","Empati mendahului solusi, kebaikan kecil itu penting, dan koneksi manusia adalah kebutuhan dasar, bukan kemewahan."],
+    ["Bagaimana cara terbaik menikmati situs ini?","Baca dengan tenang dari atas ke bawah, nyalakan musiknya, dan biarkan setiap kata meresap."]
+  ];
+  var fl=$('faqList');
+  faq.forEach(function(it,i){
+    var d=document.createElement('div');d.className='faq-item';
+    d.innerHTML='<button class="faq-q" type="button" aria-expanded="false" aria-controls="fa'+i+'"><span>'+it[0]+'</span><span class="plus" aria-hidden="true">+</span></button><div class="faq-a" id="fa'+i+'"><p>'+it[1]+'</p></div>';
+    d.querySelector('button').addEventListener('click',function(){
+      var open=d.classList.contains('open');
+      fl.querySelectorAll('.faq-item').forEach(function(f){f.classList.remove('open');f.querySelector('button').setAttribute('aria-expanded','false')});
+      if(!open){d.classList.add('open');this.setAttribute('aria-expanded','true')}
+    });
+    fl.appendChild(d);
+  });
+})();
+</script>
+</body>
+</html>
 
