@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#14090f">
+<meta name="theme-color" content="#0b1220">
 <title>Jasa Peluk Gilang — Karena Satu Pelukan Bisa Lebih Berarti</title>
 <meta name="description" content="Jasa Peluk adalah karya kreatif dan personal tentang kehangatan, kepedulian, dan koneksi antar manusia. Sebuah hadiah, bukan layanan komersial.">
 <meta property="og:title" content="Jasa Peluk Gilang">
@@ -18,9 +18,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --night:#14090f; --wine:#2a0f1c; --wine2:#3a1626;
-  --gold:#d8b98a; --gold-d:#a9885c; --rose:#e2899f; --blush:#f3d6dc; --ivory:#f6ece4;
-  --soft:rgba(246,236,228,.72); --line:rgba(216,185,138,.28);
+  --night:#dff0fc; --wine:#c7e4f8; --wine2:#acd5f2;
+  --gold:#8a5200; --gold-d:#b8791a; --sun:#f7b92a; --rose:#d9534a; --blush:#a9570a; --ivory:#12304d;
+  --soft:rgba(18,48,77,.86); --line:rgba(18,60,100,.2);
   --serif:'Cormorant Garamond',Georgia,serif; --sans:'Jost',system-ui,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -44,7 +44,7 @@ em{font-style:italic;color:var(--blush)}
 
 /* gate */
 #gate{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;
-  background:radial-gradient(ellipse at 50% 40%,var(--wine2),var(--night) 70%);transition:opacity 1.2s ease,visibility 1.2s}
+  background:radial-gradient(ellipse at 50% 40%,#f4fbff,var(--wine2) 80%);transition:opacity 1.2s ease,visibility 1.2s}
 #gate.hide{opacity:0;visibility:hidden}
 .gate-box{max-width:440px}
 .gate-heart{font-size:34px;color:var(--rose);margin-bottom:20px;animation:beat 2.4s ease-in-out infinite}
@@ -52,15 +52,15 @@ em{font-style:italic;color:var(--blush)}
 .gate-box h1{font-size:clamp(34px,8vw,52px);margin-bottom:12px}
 .gate-box p{color:var(--soft);margin-bottom:34px}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 34px;border:1px solid var(--gold);color:var(--gold);background:transparent;font:400 14px var(--sans);letter-spacing:.14em;cursor:pointer;border-radius:2px;transition:background .3s,color .3s}
-.btn:hover{background:var(--gold);color:var(--night)}
-.btn.fill{background:var(--gold);color:var(--night)}
-.btn.fill:hover{background:var(--blush);border-color:var(--blush)}
+.btn:hover{background:var(--sun);color:#12304d;border-color:var(--sun)}
+.btn.fill{background:var(--sun);color:#12304d;border-color:var(--sun)}
+.btn.fill:hover{background:#ffd566;border-color:#ffd566}
 .gate-skip{display:block;margin:20px auto 0;background:none;border:0;color:var(--soft);font:300 13px var(--sans);cursor:pointer;text-decoration:underline;text-underline-offset:4px;min-height:44px}
 
 /* petals + sound */
 #petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
 .sound-btn{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:500;width:38px;height:38px;border-radius:50%;
-  background:rgba(20,9,15,.78);border:1px solid var(--gold-d);color:var(--gold);cursor:pointer;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center}
+  background:rgba(255,255,255,.78);border:1px solid var(--gold-d);color:var(--gold);cursor:pointer;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center}
 .sound-btn svg{width:17px;height:17px}
 .sound-btn::after{content:"";position:absolute;inset:-6px}
 .sound-btn .off{display:none}
@@ -68,7 +68,7 @@ em{font-style:italic;color:var(--blush)}
 
 /* header */
 header{position:fixed;top:0;left:0;right:0;z-index:600;padding:16px 0;transition:background .4s,padding .4s}
-header.scrolled{background:rgba(20,9,15,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:10px 0}
+header.scrolled{background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:10px 0}
 nav{display:flex;align-items:center;justify-content:space-between}
 .logo{font-family:var(--serif);font-size:23px;font-weight:500;color:var(--gold);display:flex;align-items:center;gap:10px}
 .logo i{font-style:normal;color:var(--rose)}
@@ -84,7 +84,7 @@ nav{display:flex;align-items:center;justify-content:space-between}
 .menu-btn[aria-expanded="true"] span::after{transform:translateY(-7px) rotate(-45deg)}
 
 /* hero */
-.hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:130px 0 90px;background:radial-gradient(ellipse at 75% 20%,rgba(226,137,159,.22),transparent 55%),radial-gradient(ellipse at 10% 90%,rgba(216,185,138,.12),transparent 50%),linear-gradient(180deg,var(--night),var(--wine))}
+.hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:130px 0 90px;background:radial-gradient(ellipse at 80% 14%,rgba(255,255,255,.8),transparent 44%),radial-gradient(ellipse at 10% 95%,rgba(255,255,255,.6),transparent 55%),linear-gradient(180deg,#9ccff2,#d3eafb)}
 .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
 .hero h1{font-size:clamp(42px,6.4vw,78px);margin-bottom:26px;font-weight:400}
 .hero .lead{color:var(--soft);font-size:17px;max-width:500px;margin-bottom:38px}
@@ -105,7 +105,7 @@ nav{display:flex;align-items:center;justify-content:space-between}
 .intro h2{font-size:clamp(30px,4.4vw,44px);margin-bottom:22px}
 .intro p{color:var(--soft);margin-bottom:16px}
 .moments{display:grid;gap:18px}
-.moment{border:1px solid var(--line);padding:24px 26px;background:rgba(20,9,15,.35)}
+.moment{border:1px solid var(--line);padding:24px 26px;background:rgba(255,255,255,.35)}
 .moment h4{font-size:22px;color:var(--gold);margin-bottom:4px}
 .moment p{margin:0;font-size:15px}
 .about-inner{max-width:720px;margin:0 auto}
@@ -121,7 +121,7 @@ nav{display:flex;align-items:center;justify-content:space-between}
 
 /* services */
 .service-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
-.service-card{border:1px solid var(--line);padding:34px 32px;background:linear-gradient(160deg,rgba(58,22,38,.55),rgba(20,9,15,.6));transition:border-color .4s}
+.service-card{border:1px solid var(--line);padding:34px 32px;background:linear-gradient(160deg,rgba(255,255,255,.75),rgba(255,255,255,.6));transition:border-color .4s}
 .service-card:hover{border-color:var(--gold)}
 .service-card h3{font-size:27px;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:12px}
 .service-card h3 span{font-size:22px}
@@ -138,7 +138,7 @@ nav{display:flex;align-items:center;justify-content:space-between}
 
 /* cta + faq */
 .cta{padding:0 24px;position:relative;z-index:2}
-.cta-banner{max-width:1072px;margin:0 auto;text-align:center;padding:84px 28px;border:1px solid var(--gold-d);background:radial-gradient(ellipse at 50% 0,rgba(226,137,159,.22),transparent 65%),var(--wine)}
+.cta-banner{max-width:1072px;margin:0 auto;text-align:center;padding:84px 28px;border:1px solid var(--gold-d);background:radial-gradient(ellipse at 50% 0,rgba(255,214,90,.5),transparent 65%),var(--wine)}
 .cta-banner h2{font-size:clamp(30px,5vw,48px);margin-bottom:16px}
 .cta-banner p{color:var(--soft);max-width:520px;margin:0 auto 32px}
 .faq-list{max-width:740px;margin:0 auto}
@@ -150,7 +150,7 @@ nav{display:flex;align-items:center;justify-content:space-between}
 .faq-a p{padding-bottom:22px}
 .faq-item.open .faq-a{max-height:420px}
 
-footer{position:relative;z-index:2;background:#0d0509;border-top:1px solid var(--line);padding:70px 0 34px;margin-top:110px;color:var(--soft)}
+footer{position:relative;z-index:2;background:#070c16;border-top:1px solid var(--line);padding:70px 0 34px;margin-top:110px;color:var(--soft)}
 .disclaimer{border:1px solid var(--line);padding:20px 24px;font-size:13.5px;margin-bottom:44px}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:44px}
 .footer-logo{font-family:var(--serif);font-size:26px;color:var(--gold);margin-bottom:10px}
@@ -193,7 +193,7 @@ footer li a:hover{color:var(--gold)}
 /* ===== ALUR UCAPAN (password + langkah) ===== */
 .sound-btn{z-index:950}
 body.inflow #petals{z-index:901}
-#flow{position:fixed;inset:0;z-index:900;background:radial-gradient(ellipse at 50% 30%,var(--wine2),var(--night) 75%);transition:opacity 1.1s ease,visibility 1.1s}
+#flow{position:fixed;inset:0;z-index:900;background:radial-gradient(ellipse at 50% 30%,#f4fbff,var(--wine2) 85%);transition:opacity 1.1s ease,visibility 1.1s}
 #flow.hide{opacity:0;visibility:hidden}
 .flow-bar{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:center;padding:calc(14px + env(safe-area-inset-top)) 16px 10px;min-height:68px}
 .flow-back{position:absolute;left:max(8px,env(safe-area-inset-left));top:calc(10px + env(safe-area-inset-top));width:48px;height:48px;background:none;border:0;color:var(--gold);font-size:26px;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .3s}
@@ -201,7 +201,7 @@ body.inflow #petals{z-index:901}
 .flow-dots{display:flex;gap:10px;opacity:0;transition:opacity .4s}
 .flow-dots.show{opacity:1}
 .flow-dots i{width:7px;height:7px;border-radius:50%;border:1px solid var(--gold-d);transition:background .4s,transform .4s}
-.flow-dots i.on{background:var(--gold);transform:scale(1.3)}
+.flow-dots i.on{background:var(--sun);transform:scale(1.3)}
 .flow-dots i.done{background:var(--gold-d)}
 .stage{position:absolute;inset:0;display:flex;overflow-y:auto;opacity:0;visibility:hidden;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease,visibility .7s}
 .stage.active{opacity:1;visibility:visible;transform:none}
@@ -213,20 +213,20 @@ body.inflow #petals{z-index:901}
 .btn[disabled]{opacity:.35;pointer-events:none}
 .pin{display:flex;justify-content:center;gap:18px;margin:8px 0 14px}
 .pin i{width:15px;height:15px;border-radius:50%;border:1px solid var(--gold);transition:background .2s}
-.pin i.f{background:var(--gold)}
+.pin i.f{background:var(--sun)}
 .pin.shake{animation:shake .45s}
 @keyframes shake{20%,60%{transform:translateX(-9px)}40%,80%{transform:translateX(9px)}}
 .lock-msg{min-height:26px;font-size:14.5px;color:var(--rose);margin-bottom:12px}
 .lock-msg.ok{color:var(--gold)}
 .keypad{display:grid;grid-template-columns:repeat(3,72px);gap:14px;justify-content:center}
-.key{width:72px;height:72px;border-radius:50%;border:1px solid var(--line);background:rgba(20,9,15,.5);color:var(--ivory);font:400 26px var(--serif);cursor:pointer;transition:background .2s,border-color .2s}
+.key{width:72px;height:72px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.5);color:var(--ivory);font:400 26px var(--serif);cursor:pointer;transition:background .2s,border-color .2s}
 .key:hover,.key:active{background:var(--wine2);border-color:var(--gold)}
 .key.blank{visibility:hidden}
 .type{font-family:var(--serif);font-size:clamp(22px,4.4vw,28px)!important;line-height:1.6;color:var(--ivory)!important;min-height:230px;text-align:left}
 .type.caret::after{content:"|";color:var(--gold);animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 .hug-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:22px}
-.hug{padding:16px 10px;border:1px solid var(--line);background:rgba(20,9,15,.45);color:var(--ivory);font:400 16px var(--serif);cursor:pointer;min-height:56px;transition:border-color .3s,background .3s}
+.hug{padding:16px 10px;border:1px solid var(--line);background:rgba(255,255,255,.45);color:var(--ivory);font:400 16px var(--serif);cursor:pointer;min-height:56px;transition:border-color .3s,background .3s}
 .hug span{display:block;font-size:22px}
 .hug.sel{border-color:var(--gold);background:var(--wine2);color:var(--gold)}
 .hug-msg{min-height:120px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 8px;margin-bottom:10px;font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.55;color:var(--blush);display:flex;align-items:center;justify-content:center}
@@ -240,7 +240,7 @@ body.inflow #petals{z-index:901}
 .car-nav button{width:44px;height:44px;background:none;border:1px solid var(--line);color:var(--gold);font-size:20px;border-radius:50%;cursor:pointer}
 .car-dots{display:flex;gap:8px}
 .car-dots i{width:6px;height:6px;border-radius:50%;background:var(--line);transition:background .3s}
-.car-dots i.on{background:var(--gold)}
+.car-dots i.on{background:var(--sun)}
 .msg-big{font-family:var(--serif);font-size:clamp(23px,4.6vw,30px)!important;line-height:1.55;color:var(--ivory)!important}
 .ask-row{display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap;min-height:112px;position:relative;margin-top:18px}
 .final{display:none}
@@ -249,21 +249,61 @@ body.inflow #petals{z-index:901}
 @keyframes fly{to{transform:translate(var(--dx),-112vh) rotate(25deg);opacity:0}}
 @media (max-width:380px){.keypad{grid-template-columns:repeat(3,64px);gap:12px}.key{width:64px;height:64px}}
 
-/* ===== bunga peony (ilustrasi) ===== */
-.peony-img:not([src]){visibility:hidden}
+/* ===== bunga matahari (ilustrasi) ===== */
+.flower-img:not([src]){visibility:hidden}
 @keyframes bloom{from{opacity:0;transform:scale(.4) rotate(-24deg)}}
 @keyframes breathe{50%{transform:scale(1.05) rotate(2.5deg)}}
-.gate-peony{width:150px;height:150px;margin:0 auto 14px;animation:bloom 2.2s cubic-bezier(.2,.8,.2,1) both,breathe 6s ease-in-out 2.2s infinite}
-.final-peony{display:block;width:170px;height:170px;margin:0 auto 14px}
-.final.show .final-peony{animation:bloom 1.8s cubic-bezier(.2,.8,.2,1) both,breathe 6s ease-in-out 1.8s infinite}
+.gate-flower{width:150px;height:150px;margin:0 auto 14px;animation:bloom 2.2s cubic-bezier(.2,.8,.2,1) both,breathe 6s ease-in-out 2.2s infinite}
+.final-flower{display:block;width:170px;height:170px;margin:0 auto 14px}
+.final.show .final-flower{animation:bloom 1.8s cubic-bezier(.2,.8,.2,1) both,breathe 6s ease-in-out 1.8s infinite}
+
+/* ===== tema langit biru ===== */
+.lock-msg{color:#b3261e}.lock-msg.ok{color:var(--gold)}
+.arch .frame{box-shadow:0 30px 80px rgba(18,48,77,.28)}
+footer{background:#12304d;border-top:0;color:rgba(251,244,228,.92)}
+footer .footer-logo,footer h5{color:var(--sun)}
+footer li a:hover{color:var(--sun)}
+.disclaimer,.footer-bottom{border-color:rgba(255,255,255,.22)}
+
+/* ===== aksen gelap (mewah & misterius) ===== */
+.dark{--night:#0b1220;--wine:#111c33;--wine2:#1a2a4a;--ivory:#fbf4e4;--soft:rgba(251,244,228,.88);--gold:#f2c14e;--gold-d:#b98a2e;--blush:#ffe9b0;--line:rgba(242,193,78,.28);color:var(--ivory)}
+#petals{z-index:3}
+.sound-btn{background:rgba(11,18,32,.84);color:#f2c14e;border-color:#b98a2e}
+header.scrolled{background:rgba(11,18,32,.86)}
+#gate{background:linear-gradient(180deg,#0b1220,#14284a 65%,#1d3a66)}
+#flow{background:linear-gradient(180deg,#0b1220,#14284a 65%,#1d3a66)}
+.hero{background:radial-gradient(circle at 82% 10%,rgba(255,226,130,.85),transparent 7%),radial-gradient(ellipse at 80% 12%,rgba(150,195,255,.2),transparent 46%),radial-gradient(ellipse at 50% 135%,rgba(127,191,232,.5),transparent 45%),linear-gradient(180deg,#0b1220 0%,#14284a 62%,#1d3a66 100%)}
+.dark .arch .frame{box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.about{background:linear-gradient(180deg,#0b1220,#13233f)}
+.services{background:linear-gradient(180deg,#13233f,#0b1220)}
+.dark .service-card{background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02))}
+.cta-banner.dark{background:radial-gradient(ellipse at 50% 0,rgba(150,195,255,.22),transparent 65%),#0e1a30;border-color:#b98a2e}
+.dark .key{background:rgba(255,255,255,.06)}
+.dark .hug{background:rgba(255,255,255,.06)}
+.dark .lock-msg{color:#ff8a7a}.dark .lock-msg.ok{color:var(--gold)}
+footer{background:#0b1220}
+
+/* cahaya lampu menyorot ke bawah, hanya bersama bunga matahari */
+.flower-wrap{position:relative;display:block;width:150px;height:150px;margin:0 auto 64px;isolation:isolate}
+.flower-wrap.f{width:170px;height:170px;margin-bottom:70px}
+.flower-wrap .gate-flower,.flower-wrap .final-flower{width:100%;height:100%;margin:0}
+.flower-wrap::before{content:"";position:absolute;z-index:-1;left:50%;top:-230px;width:360px;height:400px;margin-left:-180px;background:conic-gradient(from 160deg at 50% 0,rgba(255,246,222,0) 0deg,rgba(255,246,222,.17) 10deg,rgba(255,246,222,.17) 30deg,rgba(255,246,222,0) 40deg,rgba(255,246,222,0) 360deg);-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 30%,#000 78%,transparent);mask-image:linear-gradient(180deg,transparent 0,#000 30%,#000 78%,transparent);filter:blur(4px);pointer-events:none;animation:glowin 2.4s ease both}
+.flower-wrap::after{content:"";position:absolute;z-index:-1;left:50%;top:calc(100% - 14px);width:330px;height:74px;margin-left:-165px;background:radial-gradient(ellipse at 50% 40%,rgba(255,244,214,.6),rgba(255,244,214,.16) 55%,transparent 72%);filter:blur(6px);opacity:.75;pointer-events:none;animation:glowin 2.4s ease both}
+@keyframes glowin{from{opacity:0}}
+
+/* debu emas yang melayang pelan di dalam sorotan */
+.dust{position:absolute;inset:0;pointer-events:none}
+.dust i{position:absolute;border-radius:50%;background:#ffe9a8;box-shadow:0 0 6px 1px rgba(255,226,140,.8);opacity:0;animation:dustup var(--dur) ease-in-out var(--delay) infinite}
+@keyframes dustup{0%{opacity:0;transform:translate(0,0)}20%{opacity:var(--o)}80%{opacity:var(--o)}100%{opacity:0;transform:translate(var(--dx),var(--dy))}}
+@media (prefers-reduced-motion:reduce){.dust{display:none}}
 </style>
 </head>
 <body class="locked">
 <script>document.documentElement.classList.add('js')</script>
 
-<div id="gate" role="dialog" aria-label="Pembuka">
+<div id="gate" class="dark" role="dialog" aria-label="Pembuka">
   <div class="gate-box">
-    <img class="peony-img gate-peony" alt="" aria-hidden="true">
+    <div class="flower-wrap"><img class="flower-img gate-flower" alt="" aria-hidden="true"></div>
     <h1>Untuk <em>Widi</em></h1>
     <p>Sebuah ruang kecil yang dibuat dengan hati. Nyalakan suara agar lebih terasa.</p>
     <button class="btn fill" id="enterSound" type="button">MASUK DENGAN MUSIK</button>
@@ -271,7 +311,7 @@ body.inflow #petals{z-index:901}
   </div>
 </div>
 
-<div id="flow" aria-label="Langkah menikmati ucapan">
+<div id="flow" class="dark" aria-label="Langkah menikmati ucapan">
   <div class="flow-bar">
     <button class="flow-back" id="flowBack" type="button" aria-label="Kembali">←</button>
     <div class="flow-dots" id="flowDots"></div>
@@ -325,7 +365,7 @@ body.inflow #petals{z-index:901}
       <div class="ask-row"><button class="btn fill" type="button" id="yesBtn">IYA</button><button class="btn" type="button" id="noBtn">NANTI DULU</button></div>
     </div>
     <div class="final" id="finalBox">
-      <img class="peony-img final-peony" alt="" aria-hidden="true">
+      <div class="flower-wrap f"><img class="flower-img final-flower" alt="" aria-hidden="true"></div>
       <h2 id="finalT"></h2>
       <p class="msg-big" id="finalP"></p>
       <button class="btn fill" type="button" id="openSite">BUKA HALAMAN LENGKAP</button>
@@ -340,7 +380,7 @@ body.inflow #petals{z-index:901}
   <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="opacity:.75"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/><path d="M3 3l18 18" stroke-width="2"/></svg>
 </button>
 
-<header id="siteHeader">
+<header id="siteHeader" class="dark">
   <div class="container">
     <nav aria-label="Navigasi utama">
       <a href="#beranda" class="logo"><i>♥</i> Jasa Peluk Gilang</a>
@@ -358,7 +398,7 @@ body.inflow #petals{z-index:901}
 
 <main id="top">
 
-  <section class="hero" id="beranda">
+  <section class="hero dark" id="beranda">
     <div class="container hero-inner">
       <div>
         <span class="eyebrow">SEBUAH KONSEP, HANYA DIBUAT UNTUKMU</span>
@@ -389,7 +429,7 @@ body.inflow #petals{z-index:901}
     </div>
   </section>
 
-  <section class="about" id="tentang">
+  <section class="about dark" id="tentang">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">TENTANG AKU</span>
@@ -422,7 +462,7 @@ body.inflow #petals{z-index:901}
     </div>
   </section>
 
-  <section class="services" id="layanan">
+  <section class="services dark" id="layanan">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">JENIS KEHANGATAN</span>
@@ -463,7 +503,7 @@ body.inflow #petals{z-index:901}
   </section>
 
   <div class="cta">
-    <div class="cta-banner reveal">
+    <div class="cta-banner reveal dark">
       <h2>Karena kamu pantas merasa <em>hangat</em></h2>
       <p>Halaman ini dibuat dengan penuh perhatian, sebagai pengingat kecil bahwa kamu selalu berarti dan tidak sendirian.</p>
       <a href="#tentang" class="btn fill">BACA LAGI CERITAKU</a>
@@ -529,56 +569,65 @@ window.CONFIG={
   var $=function(id){return document.getElementById(id)};
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ilustrasi bunga peony: digambar sekali lalu dipakai di beberapa tempat */
-  function buildPeony(N){
+  /* ilustrasi bunga matahari: digambar sekali lalu dipakai di beberapa tempat */
+  function buildSunflower(N){
     var SC=N/1400,c=document.createElement('canvas');c.width=c.height=N;
-    var g=c.getContext('2d'),sd=42;
+    var g=c.getContext('2d'),sd=21;
     function rnd(){sd=sd*16807%2147483647;return sd/2147483647}
-    function pet(L,w,c1,c2,c3){
-      var k=L/106;g.save();g.scale(k*w,k);g.translate(-64,-122);
-      function path(){g.beginPath();g.moveTo(64,122);
-        g.bezierCurveTo(30,108,4,84,6,54);g.bezierCurveTo(7,38,16,26,28,22);
-        g.quadraticCurveTo(34,8,46,16);g.quadraticCurveTo(54,20,64,22);
-        g.quadraticCurveTo(74,20,82,16);g.quadraticCurveTo(94,8,100,22);
-        g.bezierCurveTo(112,26,121,38,122,54);g.bezierCurveTo(124,84,98,108,64,122);g.closePath()}
-      g.shadowColor='rgba(110,25,60,.32)';g.shadowBlur=26*SC;g.shadowOffsetY=6*SC;
-      var gr=g.createRadialGradient(64,118,2,64,64,76);
-      gr.addColorStop(0,c3);gr.addColorStop(.5,c2);gr.addColorStop(1,c1);
+    function ray(r0,L,w,c1,c2,c3){
+      var k=L/116;g.save();g.translate(0,-r0);g.scale(k*w,k);g.translate(-64,-122);
+      function path(){g.beginPath();g.moveTo(64,122);g.bezierCurveTo(38,104,30,52,64,6);g.bezierCurveTo(98,52,90,104,64,122);g.closePath()}
+      g.shadowColor='rgba(70,40,5,.35)';g.shadowBlur=16*SC;g.shadowOffsetY=4*SC;
+      var gr=g.createLinearGradient(0,118,0,8);gr.addColorStop(0,c3);gr.addColorStop(.55,c2);gr.addColorStop(1,c1);
       path();g.fillStyle=gr;g.fill();
       g.shadowColor='transparent';g.shadowBlur=0;g.shadowOffsetY=0;
       g.save();path();g.clip();
-      g.strokeStyle='rgba(170,55,95,.09)';g.lineWidth=1.3;
-      for(var i=-6;i<=6;i++){g.beginPath();g.moveTo(64,116);g.quadraticCurveTo(64+i*3,70,64+i*8.5,24);g.stroke()}
-      var hl=g.createLinearGradient(0,10,0,66);hl.addColorStop(0,'rgba(255,255,255,.5)');hl.addColorStop(1,'rgba(255,255,255,0)');
-      g.fillStyle=hl;g.fillRect(0,0,128,66);g.restore();
-      path();g.strokeStyle='rgba(255,255,255,.55)';g.lineWidth=1.6;g.stroke();g.restore();
+      g.strokeStyle='rgba(176,96,8,.3)';g.lineWidth=1.8;g.beginPath();g.moveTo(64,118);g.quadraticCurveTo(63,66,64,16);g.stroke();
+      g.lineWidth=1.1;g.strokeStyle='rgba(176,96,8,.17)';
+      [-16,-8,8,16].forEach(function(dx){g.beginPath();g.moveTo(64,114);g.quadraticCurveTo(64+dx*.8,66,64+dx*1.2,28);g.stroke()});
+      g.restore();
+      path();g.strokeStyle='rgba(255,246,200,.35)';g.lineWidth=1.6;g.stroke();g.restore();
     }
-    var rings=[[9,560,.92,'#ffe8ee','#f6bccd','#ea94ae'],[9,480,.9,'#ffe3ea','#f3b0c4','#e4809e'],[8,400,.88,'#ffe6ec','#f3a9bf','#dd7392'],
-      [7,320,.86,'#fddde6','#ef97b2','#d4688a'],[6,245,.84,'#fbd0dd','#e8809f','#c9507a'],[5,170,.8,'#f7bccf','#e06a90','#b83b68']];
     g.translate(N/2,N/2);g.scale(SC,SC);
-    var sh=g.createRadialGradient(0,40,50,0,40,330);sh.addColorStop(0,'rgba(130,30,70,.28)');sh.addColorStop(1,'rgba(130,30,70,0)');
-    g.fillStyle=sh;g.beginPath();g.arc(0,40,330,0,6.283);g.fill();
-    rings.forEach(function(r,ri){
-      var off=rnd()*6.283;
-      for(var i=0;i<r[0];i++){
-        g.save();g.rotate(off+i*(6.283/r[0])+(rnd()-.5)*.28);g.translate(0,-(8+ri*3));g.rotate((rnd()-.5)*.12);
-        pet(r[1]*(.93+rnd()*.14),r[2]*(.95+rnd()*.12),r[3],r[4],r[5]);g.restore();
+    var gl=g.createRadialGradient(0,0,150,0,0,650);gl.addColorStop(0,'rgba(255,200,60,.25)');gl.addColorStop(1,'rgba(255,200,60,0)');
+    g.fillStyle=gl;g.beginPath();g.arc(0,0,650,0,6.283);g.fill();
+    function ring(n,r0,L,w,col,off){
+      for(var i=0;i<n;i++){
+        g.save();g.rotate(off+i*6.283/n+(rnd()-.5)*.06);g.rotate((rnd()-.5)*.08);
+        ray(r0,L*(.93+rnd()*.12),w*(.92+rnd()*.15),col[0],col[1],col[2]);g.restore();
       }
-    });
-    var cg=g.createRadialGradient(0,0,2,0,0,70);cg.addColorStop(0,'rgba(255,225,150,.95)');cg.addColorStop(.5,'rgba(236,150,160,.55)');cg.addColorStop(1,'rgba(200,70,110,0)');
-    g.fillStyle=cg;g.beginPath();g.arc(0,0,70,0,6.283);g.fill();
-    for(var j=0;j<70;j++){
-      var a=rnd()*6.283,l=22+rnd()*46;
-      g.strokeStyle='rgba(222,176,92,.9)';g.lineWidth=1.8;g.beginPath();g.moveTo(Math.cos(a)*6,Math.sin(a)*6);g.lineTo(Math.cos(a)*l,Math.sin(a)*l);g.stroke();
-      g.fillStyle='#f3cf78';g.beginPath();g.arc(Math.cos(a)*l,Math.sin(a)*l,2.6,0,6.283);g.fill();
     }
-    g.fillStyle='#e9b85c';g.beginPath();g.arc(0,0,9,0,6.283);g.fill();
+    ring(21,150,440,1,['#ffe27a','#f5b324','#d97a0c'],rnd()*6.283);
+    ring(21,140,400,.95,['#fff0a0','#ffcc33','#eb9a14'],rnd()*6.283);
+    ring(21,130,330,.9,['#fff5b8','#ffd84d','#f2a81d'],rnd()*6.283);
+    var dg=g.createRadialGradient(0,0,10,0,0,215);dg.addColorStop(0,'#24140a');dg.addColorStop(.7,'#4d2d10');dg.addColorStop(1,'#8a5a16');
+    g.shadowColor='rgba(40,20,0,.5)';g.shadowBlur=24*SC;g.fillStyle=dg;g.beginPath();g.arc(0,0,215,0,6.283);g.fill();
+    g.shadowColor='transparent';g.shadowBlur=0;
+    for(var i=1;i<=620;i++){
+      var t=Math.sqrt(i/620),r=t*205,a=i*2.399963,tt=Math.pow(t,1.3);
+      g.fillStyle='rgb('+Math.round(28+158*tt)+','+Math.round(15+113*tt)+','+Math.round(6+24*tt)+')';
+      g.beginPath();g.arc(Math.cos(a)*r,Math.sin(a)*r,4.5+t*3.5,0,6.283);g.fill();
+    }
+    g.strokeStyle='rgba(255,214,90,.35)';g.lineWidth=3;g.beginPath();g.arc(0,0,214,0,6.283);g.stroke();
     return c;
   }
   setTimeout(function(){try{
-    var pUrl=buildPeony(640).toDataURL('image/png');
-    [].forEach.call(document.querySelectorAll('.peony-img'),function(im){im.src=pUrl});
+    var pUrl=buildSunflower(640).toDataURL('image/png');
+    [].forEach.call(document.querySelectorAll('.flower-img'),function(im){im.src=pUrl});
   }catch(err){}},40);
+
+  /* debu emas di dalam sorotan lampu */
+  [].forEach.call(document.querySelectorAll('.flower-wrap'),function(w){
+    var box=document.createElement('span');box.className='dust';box.setAttribute('aria-hidden','true');
+    var n=innerWidth<600?22:30,sd=7+w.className.length;
+    function r(){sd=sd*16807%2147483647;return sd/2147483647}
+    for(var i=0;i<n;i++){
+      var e=document.createElement('i'),y=-200+r()*370,half=(y+230)*.3,x=(w.classList.contains('f')?85:75)+(r()*2-1)*half*.9,sz=1+r()*2.6;
+      e.style.cssText='left:'+x+'px;top:'+(y+0)+'px;width:'+sz+'px;height:'+sz+'px;--o:'+(.35+r()*.6)+';--dur:'+(7+r()*6).toFixed(1)+'s;--delay:-'+(r()*10).toFixed(1)+'s;--dx:'+((r()*2-1)*14).toFixed(0)+'px;--dy:-'+(40+r()*70).toFixed(0)+'px';
+      box.appendChild(e);
+    }
+    w.appendChild(box);
+  });
 
   /* header + menu mobile */
   var header=$('siteHeader'),menuBtn=$('menuBtn'),navLinks=$('navLinks');
@@ -629,26 +678,25 @@ window.CONFIG={
   function petal(c1,c2,c3){
     var c=document.createElement('canvas');c.width=128;c.height=128;var g=c.getContext('2d');
     var path=function(){g.beginPath();g.moveTo(64,122);
-      g.bezierCurveTo(30,108,4,84,6,54);g.bezierCurveTo(7,38,16,26,28,22);
-      g.quadraticCurveTo(34,8,46,16);g.quadraticCurveTo(54,20,64,22);
-      g.quadraticCurveTo(74,20,82,16);g.quadraticCurveTo(94,8,100,22);
-      g.bezierCurveTo(112,26,121,38,122,54);g.bezierCurveTo(124,84,98,108,64,122);g.closePath()};
-    var gr=g.createRadialGradient(64,110,4,64,62,72);
-    gr.addColorStop(0,c3);gr.addColorStop(.5,c2);gr.addColorStop(1,c1);
+      g.bezierCurveTo(38,104,30,52,64,6);g.bezierCurveTo(98,52,90,104,64,122);g.closePath()};
+    var gr=g.createLinearGradient(0,118,0,8);
+    gr.addColorStop(0,c3);gr.addColorStop(.55,c2);gr.addColorStop(1,c1);
     path();g.fillStyle=gr;g.fill();
     g.save();path();g.clip();
-    g.strokeStyle='rgba(176,64,98,.13)';g.lineWidth=1.6;
-    [-34,-17,0,17,34].forEach(function(dx){g.beginPath();g.moveTo(64,112);g.quadraticCurveTo(64+dx*.5,70,64+dx*1.5,24);g.stroke()});
-    var hl=g.createLinearGradient(0,10,0,60);hl.addColorStop(0,'rgba(255,255,255,.45)');hl.addColorStop(1,'rgba(255,255,255,0)');
-    g.fillStyle=hl;g.fillRect(0,0,128,64);g.restore();
-    path();g.strokeStyle='rgba(255,255,255,.38)';g.lineWidth=2;g.stroke();
+    g.strokeStyle='rgba(176,96,8,.28)';g.lineWidth=1.6;
+    g.beginPath();g.moveTo(64,118);g.quadraticCurveTo(63,66,64,16);g.stroke();
+    g.lineWidth=1;g.strokeStyle='rgba(176,96,8,.16)';
+    [-14,-7,7,14].forEach(function(dx){g.beginPath();g.moveTo(64,114);g.quadraticCurveTo(64+dx*.8,66,64+dx*1.2,28);g.stroke()});
+    var hl=g.createLinearGradient(0,0,0,70);hl.addColorStop(0,'rgba(255,255,255,.4)');hl.addColorStop(1,'rgba(255,255,255,0)');
+    g.fillStyle=hl;g.fillRect(0,0,128,70);g.restore();
+    path();g.strokeStyle='rgba(255,255,255,.28)';g.lineWidth=1.6;g.stroke();
     return c;
   }
-  SP=[petal('#fff1f4','#f9c6d3','#ec93ae'),petal('#fde8ee','#f4a9be','#dd7392'),petal('#fff6f6','#fbd9df','#f1a3b6'),petal('#f9d4de','#ee9bb3','#d4688a')];
+  SP=[petal('#ffe58a','#ffc933','#f0a01a'),petal('#fff0a8','#ffd84d','#f2a81d'),petal('#ffd966','#fbbf24','#e8890c'),petal('#ffec8a','#ffcf3d','#f5b324')];
   function size(){dpr=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr)}
   function mk(init){
     var d=Math.random();
-    return{sp:SP[Math.random()*4|0],w:12+d*20,x0:Math.random()*(W+80)-40,
+    return{sp:SP[Math.random()*4|0],w:16+d*24,x0:Math.random()*(W+80)-40,
       y:init?Math.random()*(H+80)-40:-40-Math.random()*120,vy:20+d*34,amp:14+Math.random()*28,
       f1:.45+Math.random()*.45,f2:1+Math.random()*.7,ph:Math.random()*6.28,rf:.5+Math.random()*.5,rp:Math.random()*6.28,
       ff:.7+Math.random()*.8,fp:Math.random()*6.28,a:.35+d*.4,spin:(Math.random()-.5)*.35,rot:Math.random()*6.28};
@@ -811,13 +859,9 @@ window.CONFIG={
 
   /* FAQ */
   var faq=[
-    ["Apa itu Jasa Peluk?","Karya kreatif dan personal yang menyampaikan kehangatan, empati, dan koneksi manusia lewat sebuah situs web. Ini bukan bisnis nyata."],
-    ["Apakah ini layanan yang bisa dipesan?","Tidak. Tidak ada layanan fisik, pemesanan, atau pembayaran. Semuanya simbolis dan dibuat sebagai karya emosional untuk satu orang."],
-    ["Apakah ini layanan kencan atau escort?","Sama sekali bukan. Konsep ini murni tentang kehangatan emosional secara simbolis, tanpa kontak fisik komersial."],
     ["Untuk apa situs ini dibuat?","Sebagai hadiah kreatif untuk menyampaikan perhatian dan kepedulian kepada seseorang yang berarti."],
     ["Apa arti delapan jenis peluk?","Representasi momen emosional dalam hidup: semangat, hari berat, awal baru, perpisahan, kebahagiaan, keheningan, kasih sayang, dan keluarga."],
     ["Mengapa memilih tema pelukan?","Karena pelukan adalah salah satu cara paling jujur dan universal untuk menyampaikan kepedulian tanpa kata."],
-    ["Apakah ada transaksi uang?","Tidak ada. Tidak ada sistem pembayaran atau pemesanan sama sekali."],
     ["Apa filosofi di baliknya?","Empati mendahului solusi, kebaikan kecil itu penting, dan koneksi manusia adalah kebutuhan dasar, bukan kemewahan."],
     ["Bagaimana cara terbaik menikmati situs ini?","Baca dengan tenang dari atas ke bawah, nyalakan musiknya, dan biarkan setiap kata meresap."]
   ];
@@ -836,4 +880,3 @@ window.CONFIG={
 </script>
 </body>
 </html>
-
